@@ -1,7 +1,7 @@
 function reverseWords(string) {
 	var wordsArr = string.split(" ");
 
-	var reversedWord = [];
+	var reversedWordsArr = [];
 
 	wordsArr.forEach((word) => {
 		var spelledWord = word.split("");
@@ -32,23 +32,23 @@ function reverseWords(string) {
 		while (spelledWord.length > 0) {
 			var eachLetter = spelledWord.pop();
 			// console.log(eachLetter);
-			reversedWord.push(eachLetter);
-			// console.log(reversedWord);
+			reversedWordsArr.push(eachLetter);
+			// console.log(reversedWordsArr);
 		}
 		// Adds punctuation back in
 		if (hasPunctuation) {
-			reversedWord.push(withheldPunctuation);
+			reversedWordsArr.push(withheldPunctuation);
 		}
 
 		// Adds spaces back in
 		if (wordsArr.indexOf(word) < wordsArr.length - 1) {
 			// console.log("wordsArr index:", wordsArr.indexOf(word));
-			reversedWord.push(" ");
-			// console.log(reversedWord);
+			reversedWordsArr.push(" ");
+			// console.log(reversedWordsArr);
 		}
 	});
-	// stringify
-	return reversedWord.join("");
+	// stringifies
+	return reversedWordsArr.join("");
 }
 
 // reverseWords("Hi, it's me.");
@@ -58,3 +58,21 @@ reverseWords("What? No, thanks! That's just, like, your opinion, man.");
 // return the new string
 // every word should be reversed, but the string as a whole should not be reversed
 // do not use the array.reverse() method
+
+// Instructor Solution:
+function reverseWords(string) {
+	var wordsArr = string.split(" ");
+	var reversedWordsArr = [];
+
+	wordsArr.forEach((word) => {
+		var reversedWord = "";
+		for (var i = word.length - 1; i >= 0; i--) {
+			reversedWord += word[i];
+		}
+		reversedWordsArr.push(reversedWord);
+	});
+
+	return reversedWordsArr.join(" ");
+}
+
+reverseWords("Coding JavaScript");
